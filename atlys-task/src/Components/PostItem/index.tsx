@@ -58,8 +58,8 @@ const MoreOptions = styled.button`
   }
 
   &:focus {
-    outline: 2px solid #fff;
-    outline-offset: 2px;
+    outline: 1px solid #fff;
+    outline-offset: 1px;
   }
 `;
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { greetingText } from '../../constant';
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -29,7 +30,7 @@ const Greeting: React.FC = () => {
   return (
     <HeaderContainer>
       <Name tabIndex={0}>Hello Jane</Name>
-      <Text tabIndex={0}>How are you doing today? Would you like to share something with the community 😊</Text>
+      <Text tabIndex={0}>{greetingText}</Text>
     </HeaderContainer>
   );
 };

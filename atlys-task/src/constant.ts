@@ -16,3 +16,5 @@ export const defaultPosts = [
         emoji: '😟',
       },
 ]
+
+export const greetingText = 'How are you doing today? Would you like to share something with the community 😊';

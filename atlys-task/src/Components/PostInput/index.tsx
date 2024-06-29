@@ -65,8 +65,8 @@ const Button = styled.button`
   display: flex;
   align-self: end;
   &:focus {
-    outline: 2px solid #fff;
-    outline-offset: 2px;
+    outline: 1px solid #fff;
+    outline-offset: 1px;
   }
 `;
 

@@ -3,6 +3,7 @@ import './App.css';
 import Greeting from './Components/Greeting';
 import PostInput from './Components/PostInput';
 import { defaultPosts}  from './constant';
+import PostList from './Components/PostList';
 
 
 const App: React.FC = () => {
@@ -22,6 +23,7 @@ const App: React.FC = () => {
     <div className="App">
       <Greeting/>
       <PostInput onPost={addPost}/>
+      <PostList posts={posts} />
     </div>
   );
 }
