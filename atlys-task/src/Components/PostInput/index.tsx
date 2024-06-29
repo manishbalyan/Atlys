@@ -1,10 +1,9 @@
-// src/components/PostInput.tsx
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FaComment } from 'react-icons/fa';
 
 const InputContainer = styled.div`
-  background-color: #2c2c2c;
+  background-color: #27292d;
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 20px;
@@ -26,7 +25,7 @@ const CreatePost = styled.div`
 const InputWrapper = styled.div`
   display: flex;
   align-items: center;
-  background-color: #1a1a1a;
+  background-color: #191920;
   padding: 10px 20px;
   border-radius: 8px;
   width: 94%;
@@ -51,12 +50,12 @@ const Input = styled.input`
   font-size: 1rem;
   flex-grow: 1;
   &::placeholder {
-    color: #7f8080;
+    color: #7f80804;
   }
 `;
 
 const Button = styled.button`
-  background-color: #0070f3;
+  background-color: #4a96ff;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -65,9 +64,6 @@ const Button = styled.button`
   cursor: pointer;
   display: flex;
   align-self: end;
-  &:hover {
-    background-color: #005bb5;
-  }
   &:focus {
     outline: 2px solid #fff;
     outline-offset: 2px;

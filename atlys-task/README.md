@@ -1,4 +1,4 @@
-#Atlys Twitter
+# Atlys Twitter
 
 Steps to run project
 ### `npm install`
