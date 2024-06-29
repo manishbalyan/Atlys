@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FaComment } from 'react-icons/fa';
 
 const PostContainer = styled.div`
-  background-color: #2c2c2c;
+  background-color: #27292d;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
