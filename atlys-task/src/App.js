@@ -6,10 +6,7 @@ import Greeting from './Components/Greeting';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Atlys</h1>
-        <Greeting/>
-      </header>
+      <Greeting/>
     </div>
   );
 }
