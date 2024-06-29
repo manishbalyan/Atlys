@@ -68,6 +68,10 @@ const Button = styled.button`
   &:hover {
     background-color: #005bb5;
   }
+  &:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
 `;
 
 interface PostInputProps {
@@ -89,16 +93,17 @@ const PostInput: React.FC<PostInputProps> = ({ onPost }) => {
     <CreatePost>Create Post</CreatePost>
       <InputWrapper>
         <IconWrapper>
-          <FaComment color="#bbb" />
+          <FaComment color="#bbb" aria-hidden="true"/>
         </IconWrapper>
         <Input
           type="text"
           placeholder="How are you feeling today?"
           value={postContent}
           onChange={(e) => setPostContent(e.target.value)}
+          aria-label="Post content"
         />
       </InputWrapper>
-      <Button onClick={handlePost}>Post</Button>
+      <Button onClick={handlePost}  aria-label="Post content">Post</Button>
     </InputContainer>
   );
 };

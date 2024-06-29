@@ -29,8 +29,8 @@ const Text = styled.p`
 const Greeting: React.FC = () => {
   return (
     <HeaderContainer>
-      <Name>Hello Jane</Name>
-      <Text>How are you doing today? Would you like to share something with the community 😊</Text>
+      <Name tabIndex={0}>Hello Jane</Name>
+      <Text tabIndex={0}>How are you doing today? Would you like to share something with the community 😊</Text>
     </HeaderContainer>
   );
 };

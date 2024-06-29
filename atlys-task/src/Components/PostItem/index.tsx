@@ -46,9 +46,21 @@ const PostTime = styled.div`
   justify-content: flex-start;
 `;
 
-const MoreOptions = styled.div`
+const MoreOptions = styled.button`
   cursor: pointer;
+  background: none;
+  border: none;
   color: #bbb;
+  font-size: 1.5rem;
+
+  &:hover {
+    color: white;
+  }
+
+  &:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
 `;
 
 const PostContent = styled.div`
@@ -99,20 +111,20 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
     <PostContainer>
       <PostHeader>
         <UserInfo>
-          <Avatar src={post.avatar} alt="User Avatar" />
+          <Avatar src={post.avatar} alt={`${post.author}'s avatar`}/>
           <div>
-            <UserName>{post.author}</UserName>
-            <PostTime>{post.time}</PostTime>
+            <UserName tabIndex={0}>{post.author}</UserName>
+            <PostTime tabIndex={0}>{post.time}</PostTime>
           </div>
         </UserInfo>
-        <MoreOptions>...</MoreOptions>
+        <MoreOptions aria-label="More options" tabIndex={0}>...</MoreOptions>
       </PostHeader>
-      <PostContent>
+      <PostContent tabIndex={0}>
         <EmojiWrapper>{post.emoji}</EmojiWrapper>
         {post.content}
       </PostContent>
-      <Comments>
-        <CommentIcon />
+      <Comments tabIndex={0}>
+        <CommentIcon aria-hidden="true" />
         {post.comments} comments
       </Comments>
     </PostContainer>
