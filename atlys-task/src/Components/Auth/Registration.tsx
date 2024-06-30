@@ -152,20 +152,21 @@ const Link = styled.a`
   text-decoration: none;
 `;
 
-interface LoginProps {
+interface RegisterProps {
   onClose: () => void;
-  onLogin: (username: string, password: string) => void;
-  switchToRegister: () => void;
+  onRegister: (email: string, username: string, password: string) => void;
+  switchToLogin: () => void;
 }
 
-const Login: React.FC<LoginProps> = ({ onClose, onLogin, switchToRegister }) => {
+const Register: React.FC<RegisterProps> = ({ onClose, onRegister, switchToLogin }) => {
+  const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onLogin(username, password);
+    onRegister(email, username, password);
   };
 
   const togglePasswordVisibility = () => {
@@ -175,32 +176,36 @@ const Login: React.FC<LoginProps> = ({ onClose, onLogin, switchToRegister }) => 
   return (
     <ModalOverlay>
       <ModalContent>
-        <CloseButton onClick={onClose} aria-label="Close login form">
+        <CloseButton onClick={onClose} aria-label="Close registration form">
           <FaTimes />
         </CloseButton>
-        <Title>WELCOME BACK</Title>
-        <Subtitle>Log into your account</Subtitle>
+        <Title>SIGN UP</Title>
+        <Subtitle>Create an account to continue</Subtitle>
         <form onSubmit={handleSubmit}>
-          <Label htmlFor="username">Email or Username</Label>
+          <Label htmlFor="email">Email</Label>
+          <Input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            aria-label="Email"
+          />
+          <Label htmlFor="username">Username</Label>
           <Input
             type="text"
             id="username"
-            placeholder="Enter your email or username"
+            placeholder="Choose a preferred username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            aria-label="Email or Username"
+            aria-label="Username"
           />
-          <Wrapper>
           <Label htmlFor="password">Password</Label>
-          <Label>
-            <Link href="#">Forgot password?</Link>
-          </Label>
-          </Wrapper>
           <PasswordWrapper>
             <PasswordInput
               type={showPassword ? 'text' : 'password'}
               id="password"
-              placeholder="Enter your password"
+              placeholder="Choose a strong password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               aria-label="Password"
@@ -213,10 +218,10 @@ const Login: React.FC<LoginProps> = ({ onClose, onLogin, switchToRegister }) => 
               <FaEye />
             </TogglePasswordButton>
           </PasswordWrapper>
-          <Button type="submit">Login now</Button>
+          <Button type="submit">Continue</Button>
           <LinkWrapper>
-            <span>Not registered yet?</span>
-            <Link onClick={switchToRegister}>Register →</Link>
+            <span>Already have an account?</span>
+            <Link onClick={switchToLogin}>Login →</Link>
           </LinkWrapper>
         </form>
       </ModalContent>
@@ -224,4 +229,4 @@ const Login: React.FC<LoginProps> = ({ onClose, onLogin, switchToRegister }) => 
   );
 };
 
-export default Login;
+export default Register;

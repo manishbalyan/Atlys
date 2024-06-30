@@ -5,12 +5,14 @@ import PostInput from './Components/PostInput';
 import { defaultPosts}  from './constant';
 import PostList from './Components/PostList';
 import Login from './Components/Auth/Login';
+import Register from './Components/Auth/Registration';
 
 
 const App: React.FC = () => {
   const [posts, setPosts] = useState(defaultPosts);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLogin, setShowLogin] = useState<boolean>(false);
+  const [showRegister, setShowRegister] = useState<boolean>(false);
 
   useEffect(() => {
     const loggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
@@ -35,6 +37,7 @@ const App: React.FC = () => {
     };
     setPosts([newPost, ...posts]);
   };
+
   const handleLogin = (username: string, password: string) => {
     sessionStorage.setItem('isLoggedIn', 'true');
     sessionStorage.setItem('username', username);
@@ -42,8 +45,30 @@ const App: React.FC = () => {
     setShowLogin(false);
   };
 
+  const handleRegister = (email: string, username: string, password: string) => {
+    localStorage.setItem('register', 'true');
+    sessionStorage.setItem('isLoggedIn', 'true');
+    sessionStorage.setItem('username', username);
+    setIsLoggedIn(true);
+    setShowRegister(false);
+  };
+
   const closeLogin = () => {
     setShowLogin(false);
+  };
+
+  const closeRegister = () => {
+    setShowRegister(false);
+  };
+
+  const switchToRegister = () => {
+    setShowLogin(false);
+    setShowRegister(true);
+  };
+
+  const switchToLogin = () => {
+    setShowRegister(false);
+    setShowLogin(true);
   };
 
   return (
@@ -51,7 +76,8 @@ const App: React.FC = () => {
       <Greeting/>
       <PostInput onPost={addPost}/>
       <PostList posts={posts} />
-      {showLogin && <Login onClose={closeLogin} onLogin={handleLogin} />}
+      {showLogin && <Login onClose={closeLogin} onLogin={handleLogin} switchToRegister={switchToRegister} />}
+      {showRegister && <Register onClose={closeRegister} onRegister={handleRegister} switchToLogin={switchToLogin} />}
     </div>
   );
 }
