@@ -11,7 +11,7 @@ const HeaderContainer = styled.div`
 
 const Name = styled.h1`
     font-size: 28px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 8px;
     color: #C5C7CA;
     font-weight: 500;
     line-height: 34px;

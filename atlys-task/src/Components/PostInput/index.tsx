@@ -47,7 +47,7 @@ const Input = styled.input`
   border: none;
   outline: none;
   color: #bbb;
-  font-size: 1rem;
+  font-size: 16px;
   flex-grow: 1;
   &::placeholder {
     color: #7f80804;
@@ -60,7 +60,7 @@ const Button = styled.button`
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 16px;
   cursor: pointer;
   display: flex;
   align-self: end;

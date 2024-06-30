@@ -51,7 +51,7 @@ const MoreOptions = styled.button`
   background: none;
   border: none;
   color: #bbb;
-  font-size: 1.5rem;
+  font-size: 24px;
 
   &:hover {
     color: white;
