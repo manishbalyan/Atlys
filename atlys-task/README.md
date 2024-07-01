@@ -1,7 +1,7 @@
 # Atlys Twitter
 
 Steps to run project
-### `npm install`
-### `npm start`
+### `npm run install`
+### `npm run start`
 
 
