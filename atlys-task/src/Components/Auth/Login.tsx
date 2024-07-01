@@ -152,6 +152,12 @@ const Link = styled.a`
   text-decoration: none;
 `;
 
+const Error = styled.div`
+  color: red;
+  font-size: 12px;
+  text-align: left;
+`;
+
 interface LoginProps {
   onClose: () => void;
   onLogin: (username: string, password: string) => void;
@@ -161,10 +167,20 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({ onClose, onLogin, switchToRegister }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError]  = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if(username === '' || password === ''){
+      setError('Enter username or password');
+      return;
+    }
+    const isUserRegister = localStorage.getItem('register') === 'true';
+    if(!isUserRegister){
+      setError('Please Register First');
+      return;
+    }
     onLogin(username, password);
   };
 
@@ -180,14 +196,17 @@ const Login: React.FC<LoginProps> = ({ onClose, onLogin, switchToRegister }) => 
         </CloseButton>
         <Title>WELCOME BACK</Title>
         <Subtitle>Log into your account</Subtitle>
-        <form onSubmit={handleSubmit}>
+        <div>
           <Label htmlFor="username">Email or Username</Label>
           <Input
             type="text"
             id="username"
             placeholder="Enter your email or username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => {
+              setError('');
+              setUsername(e.target.value)}
+            }
             aria-label="Email or Username"
           />
           <Wrapper>
@@ -202,7 +221,10 @@ const Login: React.FC<LoginProps> = ({ onClose, onLogin, switchToRegister }) => 
               id="password"
               placeholder="Enter your password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setError('');
+                setPassword(e.target.value)}
+              }
               aria-label="Password"
             />
             <TogglePasswordButton
@@ -213,12 +235,13 @@ const Login: React.FC<LoginProps> = ({ onClose, onLogin, switchToRegister }) => 
               <FaEye />
             </TogglePasswordButton>
           </PasswordWrapper>
-          <Button type="submit">Login now</Button>
+          {error && <Error>{error}</Error>}
+          <Button onClick={handleSubmit}>Login now</Button>
           <LinkWrapper>
             <span>Not registered yet?</span>
             <Link onClick={switchToRegister}>Register →</Link>
           </LinkWrapper>
-        </form>
+        </div>
       </ModalContent>
     </ModalOverlay>
   );
